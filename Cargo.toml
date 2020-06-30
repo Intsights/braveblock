@@ -1,0 +1,16 @@
+[package]
+name = "braveblock"
+version = "0.1.0"
+authors = ["Gal Ben David <gal@intsights.com>"]
+edition = "2018"
+
+[lib]
+name = "braveblock"
+crate-type = ["cdylib"]
+
+[dependencies.adblock]
+version = "0.2.9"
+
+[dependencies.pyo3]
+version = "0.11.0"
+features = ["extension-module"]
