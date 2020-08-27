@@ -1,5 +1,6 @@
-use pyo3::prelude::*;
 use adblock::engine::Engine;
+use adblock::lists::FilterFormat;
+use pyo3::prelude::*;
 use std::sync::{Arc, Mutex};
 
 
@@ -29,7 +30,7 @@ unsafe impl Send for Adblocker {}
 impl Adblocker {
     #[new]
     fn new(rules: Vec<String>) -> Self {
-        let adblock_engine = Engine::from_rules(&rules);
+        let adblock_engine = Engine::from_rules(&rules, FilterFormat::Standard);
         let blocker = Arc::new(Mutex::new(adblock_engine));
 
         Adblocker { engine: blocker }

@@ -9,8 +9,8 @@ name = "braveblock"
 crate-type = ["cdylib"]
 
 [dependencies.adblock]
-version = "0.2.9"
+version = "0.3"
 
 [dependencies.pyo3]
-version = "0.11.0"
+version = "0.11"
 features = ["extension-module"]
