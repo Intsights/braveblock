@@ -3,7 +3,6 @@ use adblock::lists::FilterFormat;
 use pyo3::prelude::*;
 use std::sync::{Arc, Mutex};
 
-
 /// Adblocker class
 /// Hold the adblocker engine loaded with the rules
 ///
@@ -24,7 +23,6 @@ struct Adblocker {
 }
 
 unsafe impl Send for Adblocker {}
-
 
 #[pymethods]
 impl Adblocker {
@@ -57,13 +55,21 @@ impl Adblocker {
     ///         request_type="image",
     ///     )
     #[text_signature = "(url, source_url, request_type, /)"]
-    fn check_network_urls(&mut self, url: &str, source_url: &str, request_type: &str) -> PyResult<bool> {
-        let blocker_result = self.engine.lock().unwrap().check_network_urls(url, source_url, request_type);
+    fn check_network_urls(
+        &mut self,
+        url: &str,
+        source_url: &str,
+        request_type: &str,
+    ) -> PyResult<bool> {
+        let blocker_result =
+            self.engine
+                .lock()
+                .unwrap()
+                .check_network_urls(url, source_url, request_type);
 
         Ok(blocker_result.matched)
     }
 }
-
 
 /// Braveblock is a python library that implemented an adblocker based on Brave's browser adblocker written in Rust
 /// This library is a bindings for the original adblocker written by Brave's team
