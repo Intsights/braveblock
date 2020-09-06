@@ -1,8 +1,24 @@
 [package]
 name = "braveblock"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Gal Ben David <gal@intsights.com>"]
 edition = "2018"
+description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
+readme = "README.md"
+repository = "https://github.com/intsights/braveblock"
+license = "MIT"
+keywords = ["adblock", "ads", "adblocker", "rust", "brave", "abp", "pyo3"]
+
+[package.metadata.maturin]
+requires-python = ">=3.6"
+classifier = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+
 
 [lib]
 name = "braveblock"

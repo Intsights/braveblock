@@ -4,7 +4,7 @@ import setuptools_rust
 
 setuptools.setup(
     name='braveblock',
-    version='0.1.1',
+    version='0.1.2',
     author='Gal Ben David',
     author_email='gal@intsights.com',
     url='https://github.com/intsights/braveblock',
@@ -35,9 +35,7 @@ setuptools.setup(
         'wheel',
     ],
     install_requires=[],
-    tests_require=[
-        'gitpython',
-    ],
+    tests_require=[],
     packages=[
         'braveblock',
     ],
