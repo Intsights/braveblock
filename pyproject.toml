@@ -7,3 +7,22 @@ sdist-include = [
     "src/*",
     "Cargo.toml"
 ]
+
+[tool.poetry]
+name = "braveblock"
+version = "0.1.3"
+authors = ["Gal Ben David <gal@intsights.com>"]
+description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
+readme = "README.md"
+repository = "https://github.com/intsights/braveblock"
+license = "MIT"
+keywords = ["adblock", "ads", "adblocker", "rust", "brave", "abp", "pyo3"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+wheel = "*"
+pytest-runner = "*"
+maturin = "*"
