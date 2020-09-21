@@ -13,11 +13,7 @@ jobs:
         with:
           toolchain: stable
           override: true
-          components: rustfmt, clippy
-      - name: Lint with rustfmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
+          components: clippy
       - name: Lint with clippy
         uses: actions-rs/cargo@v1
         with:
