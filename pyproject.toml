@@ -5,8 +5,12 @@ build-backend = "maturin"
 [tool.maturin]
 sdist-include = [
     "src/*",
-    "Cargo.toml"
+    "Cargo.toml",
+    "braveblock/*.py",
+    "braveblock/*.pyi"
 ]
+manylinux = "2014"
+strip = true
 
 [tool.poetry]
 name = "braveblock"
