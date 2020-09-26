@@ -25,7 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip maturin
       - name: Build Python package
-        run: maturin build --release --no-sdist --strip --interpreter python${{matrix.python_version}} --out dist
+        run: maturin build --release --no-sdist --strip --interpreter python${{matrix.python_version}} --manylinux=2014 --out dist
       - name: Publish to PyPi
         run: maturin publish --username __token__ --no-sdist --interpreter python${{matrix.python_version}}
         env:

@@ -1,7 +1,6 @@
 use adblock::engine::Engine;
 use adblock::lists::FilterFormat;
 use pyo3::prelude::*;
-use std::sync::{Arc, Mutex};
 
 /// Adblocker class
 /// Hold the adblocker engine loaded with the rules
@@ -19,19 +18,14 @@ use std::sync::{Arc, Mutex};
 #[pyclass]
 #[text_signature = "(rules, /)"]
 struct Adblocker {
-    engine: Arc<Mutex<Engine>>,
+    engine: Engine,
 }
-
-unsafe impl Send for Adblocker {}
 
 #[pymethods]
 impl Adblocker {
     #[new]
     fn new(rules: Vec<String>) -> Self {
-        let adblock_engine = Engine::from_rules(&rules, FilterFormat::Standard);
-        let blocker = Arc::new(Mutex::new(adblock_engine));
-
-        Adblocker { engine: blocker }
+        Adblocker { engine: Engine::from_rules(&rules, FilterFormat::Standard) }
     }
 
     /// The function that should tell whether a specific request should be blocked according to the loaded rules
@@ -61,11 +55,11 @@ impl Adblocker {
         source_url: &str,
         request_type: &str,
     ) -> PyResult<bool> {
-        let blocker_result =
-            self.engine
-                .lock()
-                .unwrap()
-                .check_network_urls(url, source_url, request_type);
+        let blocker_result = self.engine.check_network_urls(
+            url,
+            source_url,
+            request_type
+        );
 
         Ok(blocker_result.matched)
     }
