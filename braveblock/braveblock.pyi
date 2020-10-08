@@ -3,8 +3,8 @@ import typing
 
 class Adblocker:
     def __init__(
-      self,
-      rules: typing.List[str],
+        self,
+        rules: typing.List[str],
     ) -> None: ...
 
     def check_network_urls(

@@ -1,1 +1,4 @@
-from .braveblock import *
+from . import braveblock
+
+
+Adblocker = braveblock.Adblocker
