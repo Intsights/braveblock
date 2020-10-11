@@ -1,6 +1,6 @@
 [package]
 name = "braveblock"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["Gal Ben David <gal@intsights.com>"]
 edition = "2018"
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
@@ -14,9 +14,14 @@ keywords = ["adblock", "ads", "adblocker", "rust", "brave", "abp", "pyo3"]
 requires-python = ">=3.6"
 classifier = [
     "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft",
+    "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Rust",
 ]
 
 [lib]
