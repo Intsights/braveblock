@@ -45,7 +45,7 @@ impl Adblocker {
     /// example:
     ///     adblocker.check_network_urls(
     ///         url="http://example.com/-advertisement-icon.",
-    ///         source_url="http://example.com/helloworld",
+    ///         source_url="http://example.com/",
     ///         request_type="image",
     ///     )
     #[text_signature = "(url, source_url, request_type, /)"]

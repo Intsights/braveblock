@@ -14,7 +14,7 @@ strip = true
 
 [tool.poetry]
 name = "braveblock"
-version = "0.1.7"
+version = "0.1.8"
 authors = ["Gal Ben David <gal@intsights.com>"]
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
 readme = "README.md"

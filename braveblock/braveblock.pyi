@@ -4,7 +4,9 @@ import typing
 class Adblocker:
     def __init__(
         self,
-        rules: typing.List[str],
+        rules: typing.Optional[typing.List[str]] = None,
+        include_easylist: bool = True,
+        include_easyprivacy: bool = True,
     ) -> None: ...
 
     def check_network_urls(
