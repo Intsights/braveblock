@@ -11,7 +11,7 @@ class Adblocker:
         rules: typing.Optional[typing.List[str]] = None,
         include_easylist: bool = True,
         include_easyprivacy: bool = True,
-    ):
+    ) -> None:
         combined_rules = []
 
         if rules is not None:
