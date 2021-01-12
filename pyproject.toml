@@ -14,7 +14,7 @@ strip = true
 
 [tool.poetry]
 name = "braveblock"
-version = "0.1.9"
+version = "0.1.10"
 authors = ["Gal Ben David <gal@intsights.com>"]
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
 readme = "README.md"
@@ -35,7 +35,6 @@ classifiers = [
     "Operating System :: MacOS",
     "Operating System :: Microsoft",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -43,7 +42,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"

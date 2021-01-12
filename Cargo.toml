@@ -1,6 +1,6 @@
 [package]
 name = "braveblock"
-version = "0.1.9"
+version = "0.1.10"
 authors = ["Gal Ben David <gal@intsights.com>"]
 edition = "2018"
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
@@ -11,13 +11,12 @@ license = "MIT"
 keywords = ["adblock", "ads", "adblocker", "rust", "brave", "abp", "pyo3"]
 
 [package.metadata.maturin]
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 classifier = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: MacOS",
     "Operating System :: Microsoft",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -29,12 +28,12 @@ name = "braveblock"
 crate-type = ["cdylib"]
 
 [dependencies.adblock]
-version = "0.3.3"
+version = "0.3.4"
 default-features = false
 features = ["full-regex-handling", "embedded-domain-resolver"]
 
 [dependencies.pyo3]
-version = "0.12.4"
+version = "0.13.1"
 features = ["extension-module"]
 
 [profile.release]
