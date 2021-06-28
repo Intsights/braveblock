@@ -1,6 +1,6 @@
 [package]
 name = "braveblock"
-version = "0.1.10"
+version = "0.1.11"
 authors = ["Gal Ben David <gal@intsights.com>"]
 edition = "2018"
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
