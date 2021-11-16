@@ -1,5 +1,5 @@
 [build-system]
-requires = ["maturin"]
+requires = ["maturin>=0.11,<0.12"]
 build-backend = "maturin"
 
 [tool.maturin]
@@ -9,12 +9,10 @@ sdist-include = [
     "braveblock/*.py",
     "braveblock/*.pyi"
 ]
-manylinux = "2014"
-strip = true
 
 [tool.poetry]
 name = "braveblock"
-version = "0.1.11"
+version = "0.1.12"
 authors = ["Gal Ben David <gal@intsights.com>"]
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
 readme = "README.md"
@@ -38,6 +36,7 @@ classifiers = [
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "Programming Language :: Rust",
 ]
 

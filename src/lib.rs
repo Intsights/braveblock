@@ -1,5 +1,5 @@
 use adblock::engine::Engine;
-use adblock::lists::FilterFormat;
+use adblock::lists::ParseOptions;
 use pyo3::prelude::*;
 
 /// Adblocker class
@@ -16,7 +16,6 @@ use pyo3::prelude::*;
 ///         ]
 ///     )
 #[pyclass]
-#[text_signature = "(rules, /)"]
 struct Adblocker {
     engine: Engine,
 }
@@ -25,7 +24,7 @@ struct Adblocker {
 impl Adblocker {
     #[new]
     fn new(rules: Vec<String>) -> Self {
-        Adblocker { engine: Engine::from_rules(&rules, FilterFormat::Standard) }
+        Adblocker { engine: Engine::from_rules(&rules, ParseOptions::default()) }
     }
 
     /// The function that should tell whether a specific request should be blocked according to the loaded rules
@@ -48,7 +47,6 @@ impl Adblocker {
     ///         source_url="http://example.com/",
     ///         request_type="image",
     ///     )
-    #[text_signature = "(url, source_url, request_type, /)"]
     fn check_network_urls(
         &mut self,
         url: &str,
