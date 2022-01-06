@@ -12,7 +12,7 @@ sdist-include = [
 
 [tool.poetry]
 name = "braveblock"
-version = "0.1.12"
+version = "0.1.13"
 authors = ["Gal Ben David <gal@intsights.com>"]
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
 readme = "README.md"
