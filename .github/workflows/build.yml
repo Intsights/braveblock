@@ -1,5 +1,7 @@
 name: Build
-on: [push, pull_request]
+on:
+  - push
+  - pull_request
 jobs:
   lint:
     if: github.event_name == 'push' && !startsWith(github.event.ref, 'refs/tags')
@@ -11,6 +13,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          profile: minimal
           override: true
           components: clippy
       - name: Lint with clippy
@@ -24,8 +27,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10']
-        os: [ubuntu-latest , macos-latest, windows-latest]
+        python-version:
+          - '3.7'
+          - '3.8'
+          - '3.9'
+          - '3.10'
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
