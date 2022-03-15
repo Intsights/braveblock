@@ -20,7 +20,7 @@ jobs:
           - windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -35,6 +35,6 @@ jobs:
         uses: messense/maturin-action@v1
         with:
           command: publish
-          args: --username=__token__ --no-sdist --interpreter=python
+          args: --username=__token__ --no-sdist --interpreter=python${{ !startsWith(matrix.os, 'windows') && matrix.python-version || '' }}
         env:
           MATURIN_PASSWORD: ${{ secrets.pypi_password }}
