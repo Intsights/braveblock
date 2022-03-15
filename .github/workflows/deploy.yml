@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Rust
@@ -35,6 +35,6 @@ jobs:
         uses: messense/maturin-action@v1
         with:
           command: publish
-          args: --username=__token__ --no-sdist
+          args: --username=__token__ --no-sdist --interpreter=python
         env:
           MATURIN_PASSWORD: ${{ secrets.pypi_password }}
