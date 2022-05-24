@@ -4,15 +4,16 @@ build-backend = "maturin"
 
 [tool.maturin]
 sdist-include = [
-    "src/*",
-    "Cargo.toml",
     "braveblock/*.py",
-    "braveblock/*.pyi"
+    "braveblock/*.pyi",
+    "Cargo.toml",
+    "pyproject.toml",
+    "src/*",
 ]
 
 [tool.poetry]
 name = "braveblock"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Gal Ben David <gal@intsights.com>"]
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
 readme = "README.md"
