@@ -15,20 +15,19 @@ class Adblocker:
     def read_gz_binary(
         file_name: str
     ) -> bytes:
-        if PY_VERSION_MAJOR >= 3 and PY_VERSION_MINOR >= 11:
-            with importlib.resources.files(
-                __package__,
-            ).joinpath(
-                file_name,
-            ).open(
-                'rb',
-            ) as _word_frequencies_binary:
-                return _word_frequencies_binary.read()
-        else:
+        if PY_VERSION_MAJOR < 3 or PY_VERSION_MINOR < 11:
             return importlib.resources.read_binary(
                 package=__package__,
-                resource='word_frequencies.gz',
+                resource=file_name,
             )
+        with importlib.resources.files(
+            __package__,
+        ).joinpath(
+            file_name,
+        ).open(
+            'rb',
+        ) as _word_frequencies_binary:
+            return _word_frequencies_binary.read()
 
     def __init__(
         self,
@@ -56,7 +55,7 @@ class Adblocker:
                 )
 
         if include_easyprivacy:
-            easyprivacy_compressed_data =self.read_gz_binary(
+            easyprivacy_compressed_data = self.read_gz_binary(
                 file_name='easyprivacy.txt.gz',
             )
 
