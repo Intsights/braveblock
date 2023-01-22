@@ -1,4 +1,5 @@
 import gzip
+import sys
 import importlib.resources
 import typing
 
