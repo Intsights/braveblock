@@ -1,0 +1,16 @@
+---
+info:
+  title: Braveblock
+  description: A fast and easy adblockplus parser and matcher based on adblock-rust
+    package
+  x-cortex-git:
+    github:
+      alias: intsightsorg
+      repository: Intsights/braveblock
+  x-cortex-tag: braveblock
+  x-cortex-type: service
+  x-cortex-domain-parents:
+  - tag: threatintel-rd
+openapi: 3.0.1
+servers:
+- url: "/"
