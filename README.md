@@ -51,8 +51,10 @@ import braveblock
 
 # Initialize the engine loaded with a rules list
 # One can download easylist and load its lines into the engine
-braveblock.Adblocker(
-    rules=[
+adblocker = braveblock.Adblocker(
+    include_easylist=False,             # Whether to include easylist rules. True by default
+    include_easyprivacy=False,          # Whether to include easyprivacy rules. True by default
+    rules=[                             # A list of custom rules to load into the engine
         "-advertisement-icon.",
         "-advertisement/script.",
     ]
