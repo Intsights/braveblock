@@ -1,5 +1,6 @@
-use adblock::engine::Engine;
 use adblock::lists::ParseOptions;
+use adblock::request::Request;
+use adblock::{Engine, FilterSet};
 use pyo3::prelude::*;
 
 /// Adblocker class
@@ -24,7 +25,13 @@ struct Adblocker {
 impl Adblocker {
     #[new]
     fn new(rules: Vec<String>) -> Self {
-        Adblocker { engine: Engine::from_rules(&rules, ParseOptions::default()) }
+        // Build a FilterSet and hand it to `Engine::from_filter_set`. The `true`
+        // args enable debug info (so the engine can report which filter matched)
+        // and optimization, respectively.
+        let mut filter_set = FilterSet::new(true);
+        filter_set.add_filters(&rules, ParseOptions::default());
+
+        Adblocker { engine: Engine::from_filter_set(filter_set, true) }
     }
 
     /// The function that should tell whether a specific request should be blocked according to the loaded rules
@@ -52,14 +59,17 @@ impl Adblocker {
         url: &str,
         source_url: &str,
         request_type: &str,
-    ) -> PyResult<bool> {
-        let blocker_result = self.engine.check_network_urls(
-            url,
-            source_url,
-            request_type
-        );
+    ) -> bool {
+        // adblock 0.7 replaced `Engine::check_network_urls` with
+        // `check_network_request`, which takes a pre-parsed `Request`. Building
+        // the request can fail on a malformed url; treat that as "not blocked",
+        // matching the old behaviour where unparseable urls never matched.
+        let request = match Request::new(url, source_url, request_type) {
+            Ok(request) => request,
+            Err(_) => return false,
+        };
 
-        Ok(blocker_result.matched)
+        self.engine.check_network_request(&request).matched
     }
 }
 
@@ -67,7 +77,7 @@ impl Adblocker {
 /// This library is a bindings for the original adblocker written by Brave's team
 /// Original code can be found here https://github.com/brave/adblock-rust
 #[pymodule]
-fn braveblock(_py: Python, m: &PyModule) -> PyResult<()> {
+fn braveblock(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<Adblocker>()?;
 
     Ok(())

@@ -1,6 +1,6 @@
 [package]
 name = "braveblock"
-version = "0.5.1"
+version = "0.6.0"
 authors = ["Gal Ben David <gal@intsights.com>"]
 edition = "2021"
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
@@ -25,13 +25,21 @@ name = "braveblock"
 crate-type = ["cdylib"]
 
 [dependencies.adblock]
-version = "0.5"
+version = "0.8"
 default-features = false
 features = ["full-regex-handling", "embedded-domain-resolver"]
 
 [dependencies.pyo3]
-version = "0.16.5"
-features = ["extension-module"]
+version = "0.22"
+features = ["extension-module", "abi3-py38"]
+
+# Transitive pin (not used directly). adblock 0.8 -> rmp-serde 0.15.5 calls
+# rmp::decode::read_data_* helpers that rmp 0.8.15 removed in a semver-breaking
+# patch, so a fresh resolve fails to compile. Cargo.lock is gitignored here
+# (library convention), so this constraint is what keeps CI builds green.
+# Drop it once rmp-serde ships a release compatible with rmp >= 0.8.15.
+[dependencies.rmp]
+version = ">=0.8, <0.8.15"
 
 [profile.release]
 lto = true

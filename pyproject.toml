@@ -1,8 +1,10 @@
 [build-system]
-requires = ["maturin>=0.12,<0.13"]
+requires = ["maturin>=1.0,<2"]
 build-backend = "maturin"
 
 [tool.maturin]
+# Build a single abi3 wheel (cp38-abi3) that runs on Python 3.8+
+features = ["pyo3/abi3-py38"]
 sdist-include = [
     "braveblock/*.py",
     "braveblock/*.pyi",
@@ -13,7 +15,7 @@ sdist-include = [
 
 [tool.poetry]
 name = "braveblock"
-version = "0.5.1"
+version = "0.6.0"
 authors = ["Gal Ben David <gal@intsights.com>"]
 description = "A fast and easy adblockplus parser and matcher based on adblock-rust package"
 readme = "README.md"
@@ -34,16 +36,17 @@ classifiers = [
     "Operating System :: MacOS",
     "Operating System :: Microsoft",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Rust",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
